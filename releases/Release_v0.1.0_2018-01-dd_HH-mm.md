@@ -16,6 +16,7 @@ desktop application.
 
 
 #### Feature
+#3 [impl] Add new class DefaultValidator to 'core' package.
 #2 [api] Add new interface Validator to 'core' package.
 #1 [project] Add basic java project structure to github project.
 
