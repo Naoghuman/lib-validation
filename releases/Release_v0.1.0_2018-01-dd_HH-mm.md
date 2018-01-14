@@ -16,6 +16,7 @@ desktop application.
 
 
 #### Feature
+#2 [api] Add new interface Validator to 'core' package.
 #1 [project] Add basic java project structure to github project.
 
 
