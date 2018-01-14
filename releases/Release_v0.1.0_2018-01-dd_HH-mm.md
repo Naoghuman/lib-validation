@@ -24,6 +24,7 @@ desktop application.
 
 #### Enhancement
 #6 [stability] Add Unittests for the class 'DefaultValidator'.
+#5 [stability] Add Unittests for the interface 'Validator'.
 
 
 
