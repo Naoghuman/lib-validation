@@ -6,8 +6,12 @@ desktop application.
 
 
 #### Summary
-* ...
-* ...
+* This is a mayor update.
+* The hole library :) .
+* With the interface `Validator` the developer can validate different default 
+  behaivours from objects.
+* With the class `ValidatorFacade` the developer can access the methods from the 
+  interface Validator.
 
 
 
@@ -17,14 +21,14 @@ desktop application.
 
 #### Feature
 #5 [docu] Prepare ReadMe for the v0.1.0.
-#3 [impl] Add new class DefaultValidator to 'core' package.
+#3 [impl] Add new class ValidatorFacade to 'core' package.
 #2 [api] Add new interface Validator to 'core' package.
 #1 [project] Add basic java project structure to github project.
 
 
 
 #### Enhancement
-#6 [stability] Add Unittests for the class 'DefaultValidator'.
+#6 [stability] Add Unittests for the class 'ValidatorFacade'.
 #4 [stability] Add Unittests for the interface 'Validator'.
 
 

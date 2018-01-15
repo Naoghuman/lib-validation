@@ -8,13 +8,13 @@ Intention
 
 Lib-Validation is a library for `easy` validating in a [JavaFX] &amp; [Maven] application.
 
-_Image:_ [UML] Lib-Validation v0.1.0
-TODO
+_Image:_ [UML] Lib-Validation v0.1.0  
+![UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43.png][UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43]
 
 > __Hint__  
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
 
-Current `version` is `0.1.0` (MM.dd.yyyy / MM.dd.yyyy).
+Current `version` is `0.1.0` (01.15.2018 / MM.dd.yyyy).
 
 
 
@@ -25,7 +25,7 @@ Content
     - [How to ...](#HoTo)
 * [Api](#Api)
     - [com.github.naoghuman.lib.validation.core.Validator](#InVa)
-    - [com.github.naoghuman.lib.validation.core.DefaultValidator](#ClDeVa)
+    - [com.github.naoghuman.lib.validation.core.ValidatorFacade](#ClVaFa)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -91,7 +91,7 @@ public default void requireNonNullAndNotEmpty(String value) throws NullPointerEx
 ```
 
 
-### com.github.naoghuman.lib.validation.core.DefaultValidator<a name="ClDeVa" />
+### com.github.naoghuman.lib.validation.core.ValidatorFacade<a name="ClVaFa" />
 
 ```java
 /**
@@ -102,18 +102,18 @@ public default void requireNonNullAndNotEmpty(String value) throws NullPointerEx
  * @since  0.1.0
  * @see    com.github.naoghuman.lib.validation.core.Validator
  */
-public class DefaultValidator implements Validator
+public class ValidatorFacade implements Validator
 ```
 
 ```java
 /**
- * Returns a singleton instance from the class {@code DefaultValidator}.
+ * Returns a singleton instance from the class {@code ValidatorFacade}.
  *
  * @author Naoghuman
  * @since  0.1.0
- * @return a singleton instance from this class {@code DefaultValidator}.
+ * @return a singleton instance from this class {@code ValidatorFacade}.
  */
-public static final DefaultValidator getDefault()
+public static final ValidatorFacade getDefault()
 ```
 
 
@@ -123,7 +123,11 @@ Download<a name="Download" />
 
 Current `version` is `0.1.0`. Main points in this release are:
 * This is a mayor update.
-* ...
+* The hole library :) .
+* With the interface `Validator` the developer can validate different default 
+  behaivours from objects.
+* With the class `ValidatorFacade` the developer can access the methods from the 
+  interface Validator.
 
 **Maven coordinates**  
 In context from a [Maven] project you can use following maven coordinates: 
@@ -138,7 +142,7 @@ In context from a [Maven] project you can use following maven coordinates:
 ```
 
 Download:
-* [Release v0.1.0 (MM.dd.yyyy)]
+* [Release v0.1.0 (01.15.2018 / MM.dd.yyyy))]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Validation]
@@ -207,6 +211,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Images)
+[UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43]:https://user-images.githubusercontent.com/8161815/34957064-43a4a724-fa2c-11e7-88dc-1f1240a57cfb.png
 
 
 
@@ -227,4 +232,5 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Validation]:https://github.com/Naoghuman/lib-validation/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
+[Release v0.1.0 (01.15.2018 / MM.dd.yyyy))]:https://github.com/Naoghuman/lib-validation/releases/tag/v0.1.0
 [UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
