@@ -16,6 +16,7 @@ desktop application.
 
 
 #### Feature
+#7 [api] Add new method 'isNull(Object): boolean'.
 
 
 
@@ -41,6 +42,7 @@ Naoghuman
 
 
 [//]: # (Issues which will be integrated in this release)
+#8 [api] Add new method 'nonNull(Object): boolean'.
 
 
 

@@ -18,6 +18,9 @@ package com.github.naoghuman.lib.validation.core;
 
 import java.awt.Label;
 import org.junit.After;
+import org.junit.Assert;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +40,22 @@ public class ValidatorTest {
     
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void testIsNullTRUE() {
+        Label value = null; // <-----------
+        
+        Validator instance = new ValidatorImpl();
+        assertTrue(instance.isNull(value));
+    }
+    
+    @Test
+    public void testIsNullFALSE() {
+        Label value = new Label(); // <-----------
+        
+        Validator instance = new ValidatorImpl();
+        assertFalse(instance.isNull(value));
     }
 
     @Test(expected = NullPointerException.class)

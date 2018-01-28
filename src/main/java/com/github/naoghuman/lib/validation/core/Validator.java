@@ -30,6 +30,22 @@ import java.util.Objects;
 public interface Validator {
     
     /**
+     * Delegates to {@link java.util.Objects#isNull(java.lang.Object)}. Returns 
+     * {@code TRUE} if the provided reference is {@code NULL} otherwise {@code FALSE}.
+     * 
+     * @author  Naoghuman
+     * @since   0.2.0
+     * @apiNote This method exists to be used as a {@link java.util.function.Predicate}, 
+     *          {@code filter(Objects::isNull)}.
+     * @param   obj a reference which will be checked against {@code NULL}.
+     * @return  {@code TRUE} if the provided reference is {@code NULL} otherwise
+     *          {@code FALSE}.
+     */
+    public default boolean isNull(final Object obj) {
+        return Objects.isNull(obj);
+    }
+    
+    /**
      * Validates if the attribute {@code value} isn't {@code NULL}.
      *
      * @author Naoghuman
@@ -38,7 +54,7 @@ public interface Validator {
      * @param  <T>   the type of the reference.
      * @throws NullPointerException if {@code (value == NULL)}.
      */
-    public default <T> void requireNonNull(T value) throws NullPointerException {
+    public default <T> void requireNonNull(final T value) throws NullPointerException {
         Objects.requireNonNull(value, "The attribute [value] can't be NULL"); // NOI18N
     }
     
@@ -51,7 +67,7 @@ public interface Validator {
      * @throws NullPointerException     if {@code (value        == NULL)}.
      * @throws IllegalArgumentException if {@code (value.trim() == EMPTY)}.
      */
-    public default void requireNonNullAndNotEmpty(String value) throws NullPointerException, IllegalArgumentException {
+    public default void requireNonNullAndNotEmpty(final String value) throws NullPointerException, IllegalArgumentException {
         Objects.requireNonNull(value, "The attribute [value] can't be NULL"); // NOI18N
         
         if (value.trim().isEmpty()) {
