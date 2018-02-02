@@ -16,6 +16,7 @@ desktop application.
 
 
 #### Feature
+#8 [api] Add new method 'nonNull(Object): boolean'.
 #7 [api] Add new method 'isNull(Object): boolean'.
 
 

@@ -46,6 +46,22 @@ public interface Validator {
     }
     
     /**
+     * Delegates to {@link java.util.Objects#nonNull(java.lang.Object)}. Returns 
+     * {@code TRUE} if the provided reference is {@code NON-NULL} otherwise {@code FALSE}.
+     * 
+     * @author  Naoghuman
+     * @since   0.2.0
+     * @apiNote This method exists to be used as a {@link java.util.function.Predicate},
+     *          {@code filter(Objects::nonNull)}.
+     * @param   obj a reference which will be checked against {@code NULL}.
+     * @return  {@code TRUE} if the provided reference is {@code NON-NULL} otherwise
+     *          {@code FALSE}.
+     */
+    public default boolean nonNull(final Object obj) {
+        return Objects.nonNull(obj);
+    }
+    
+    /**
      * Validates if the attribute {@code value} isn't {@code NULL}.
      *
      * @author Naoghuman
