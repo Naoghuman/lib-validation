@@ -20,7 +20,7 @@ import java.util.Optional;
 
 /**
  * An implementation from the {@code Interface} {@link com.github.naoghuman.lib.validation.core.Validator} 
- * which allowed access to the different {@code validation} methods in the {@code Interface}.
+ * which allowed access to the different {@code validation} methods from the {@code Interface}.
  *
  * @author Naoghuman
  * @since  0.1.0

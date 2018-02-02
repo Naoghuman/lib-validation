@@ -66,6 +66,22 @@ public interface Validator
 
 ```java
 /**
+ * Delegates to {@link java.util.Objects#isNull(java.lang.Object)}. Returns 
+ * {@code TRUE} if the provided reference is {@code NULL} otherwise {@code FALSE}.
+ * 
+ * @author  Naoghuman
+ * @since   0.2.0
+ * @apiNote This method exists to be used as a {@link java.util.function.Predicate}, 
+ *          {@code filter(Objects::isNull)}.
+ * @param   obj a reference which will be checked against {@code NULL}.
+ * @return  {@code TRUE} if the provided reference is {@code NULL} otherwise
+ *          {@code FALSE}.
+ */
+public default boolean isNull(final Object obj)
+```
+
+```java
+/**
  * Validates if the attribute {@code value} isn't {@code NULL}.
  *
  * @author Naoghuman
@@ -96,7 +112,7 @@ public default void requireNonNullAndNotEmpty(String value) throws NullPointerEx
 ```java
 /**
  * An implementation from the {@code Interface} {@link com.github.naoghuman.lib.validation.core.Validator} 
- * which allowed access to the different {@code validation} methods in the {@code Interface}.
+ * which allowed access to the different {@code validation} methods from the {@code Interface}.
  *
  * @author Naoghuman
  * @since  0.1.0
