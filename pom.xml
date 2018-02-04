@@ -6,7 +6,7 @@
     <artifactId>lib-validation</artifactId>
     <version>0.2.0-SNAPSHOT</version> <!-- -SNAPSHOT -->
     <packaging>jar</packaging>
-    <description>`Lib-Validation` is a library for `easy` validating in a [JavaFX] &amp; [Maven] desktop application.
+    <description>`Lib-Validation` is a library for `easy` validating in a [JavaFX] &amp; [Maven] application during the integration from [Bean Validation 2.0] (JSR 380).
 
 Plz see for more informations: https://github.com/Naoghuman/lib-validation</description>
     <name>Lib-Validation</name>
@@ -99,6 +99,46 @@ Plz see for more informations: https://github.com/Naoghuman/lib-validation</desc
     </build>
     
     <dependencies>
+        <!--
+            Per the JSR 380 specification, the validation-api dependency contains the 
+            standard validation APIs which can be used with the following dependencies.
+            
+            Hint:
+            A quick note here is that hibernate-validator is entirely separate  from the 
+            persistence aspects of Hibernate and by adding it as a dependency, we’re not 
+            adding these persistence aspects into the project.
+        -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>6.0.7.Final</version>
+        </dependency>
+        
+        <!-- 
+            JSR 380 provides support for variable interpolation, allowing expressions 
+            inside the violation messages.
+
+            To parse these expressions, we must add a dependency on both the expression 
+            language API and an implementation of that API. GlassFish provides this 
+            reference implementation:
+        -->
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

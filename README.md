@@ -6,7 +6,8 @@ Lib-Validation
 Intention
 ---
 
-Lib-Validation is a library for `easy` validating in a [JavaFX] &amp; [Maven] application.
+Lib-Validation is a library for `easy` validating in a [JavaFX] &amp; [Maven] application 
+during the integration from [Bean Validation 2.0] ([JSR 380]).
 
 _Image:_ [UML] Lib-Validation v0.1.0  
 ![UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43.png][UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43]
@@ -22,7 +23,10 @@ Content
 ---
 
 * [Examples](#Examples)
-    - [How to ...](#HoTo)
+    - [TODO How to ...](#HoTo)
+* [Background informations](#BaIn)
+    - [TODO More about JSR 380](#MoAbJSR)
+    - [TODO More about Bean Validation 2.0](#MoAbBeVa)
 * [Api](#Api)
     - [com.github.naoghuman.lib.validation.core.Validator](#InVa)
     - [com.github.naoghuman.lib.validation.core.ValidatorFacade](#ClVaFa)
@@ -40,7 +44,31 @@ Content
 Examples<a name="Examples" />
 ---
 
-### How to ...<a name="HoTo" />
+### TODO How to ...<a name="HoTo" />
+
+TODO
+
+
+
+Background informations<a name="BaIn" />
+---
+
+In this section I want give you some more background informations about the 
+topics `JSR 380` and `Bean Validation 2.0`.
+
+### TODO More about JSR 380<a name="MoAbJSR" />
+
+[JSR 380] (Java Specification Request) aims at evolving the Bean Validation specification 
+by leveraging Java 8 language constructs for the purposes of validation.
+
+With this specification of the Java API for bean validation, part of JavaEE and JavaSE, 
+which ensures that the properties of a bean meet specific criteria, using annotations 
+such as @NotNull, @Min, and @Max.
+
+`Hibernate Validator 6.0.7.Final is the [JSR 380 Reference Implementation: Reference Guide].
+
+
+### TODO More about Bean Validation 2.0<a name="MoAbBeVa" />
 
 TODO
 
@@ -187,6 +215,15 @@ Requirements<a name="Requirements" />
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [lib-validation-0.1.0.jar](#Installation).
 
+In the library are following libraries registered as dependencies:
+* The library [hibernate-validator-6.0.7.Final.jar](#Installation).
+  * Included is the library [classmate-1.3.1.jar].
+  * Included is the library [jboss-logging.3.3.0.jar].
+  * Included is the library [validation-api-2.0.1.jar].
+* The library [hibernate-validator-annotation-processor-6.0.7.Final.jar](#Installation).
+* The library [javax.el-2.2.6.jar](#Installation).
+* The library [javax.el-api-3.0.0.jar](#Installation).
+
 
 
 Installation<a name="Installation" />
@@ -248,21 +285,32 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Links)
+[Bean Validation 2.0]:http://beanvalidation.org/
+[classmate-1.3.1.jar]:https://github.com/FasterXML/java-classmate
 [Eclipse]:https://www.eclipse.org/
 [FXML]:http://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm
 [General Public License 3.0]:http://www.gnu.org/licenses/gpl-3.0.en.html
 [GenMyModel]:https://www.genmymodel.com/
+[hibernate-validator-6.0.7.Final.jar]:http://hibernate.org/validator/
+[hibernate-validator-annotation-processor-6.0.7.Final.jar]:http://hibernate.org/validator/
 [IntelliJ IDEA]:http://www.jetbrains.com/idea/
 [Issue]:https://github.com/Naoghuman/lib-validation/issues
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
 [JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 [JavaFX Scene Builder]:http://www.oracle.com/technetwork/java/javase/downloads/index.html
+[javax.el-2.2.6.jar]:https://mvnrepository.com/artifact/org.glassfish.web/javax.el
+[javax.el-api-3.0.0.jar]:https://mvnrepository.com/artifact/javax.el/javax.el-api
+[jboss-logging.3.3.0.jar]:https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging
 [JDK 8]:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
+[JSR 380]:https://jcp.org/en/jsr/detail?id=380
+[JSR 380 Reference Implementation: Reference Guide]:https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#preface
 [Lib-Validation]:https://github.com/Naoghuman/lib-validation
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Validation]:https://github.com/Naoghuman/lib-validation/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
+
 [Release v0.1.0 (01.15.2018 / MM.dd.yyyy))]:https://github.com/Naoghuman/lib-validation/releases/tag/v0.1.0
 [UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
+[validation-api-2.0.1.jar]:https://mvnrepository.com/artifact/javax.validation/validation-api

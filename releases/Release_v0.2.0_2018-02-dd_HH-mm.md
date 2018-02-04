@@ -16,6 +16,7 @@ desktop application.
 
 
 #### Feature
+#10 [pom] Integrate 'Bean Validation 2.0' libraries into the pom.xml.
 #8 [api] Add new method 'nonNull(Object): boolean'.
 #7 [api] Add new method 'isNull(Object): boolean'.
 
