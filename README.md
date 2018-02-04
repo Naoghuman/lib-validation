@@ -232,12 +232,14 @@ Installation<a name="Installation" />
 ##### Install the project in your preferred IDE
 
 * If not installed download the [JRE 8] or the [JDK 8].
-    - Optional: To work better with [FXML] files in a [JavaFX] application 
-      download the [JavaFX Scene Builder] under 'Additional Resources'.
 * Choose your preferred IDE (e.g. [NetBeans], [Eclipse] or [IntelliJ IDEA]) for 
   the development.
 * Download or clone [Lib-Validation].
 * Open the projects in your IDE and run them.
+
+> __Hint__  
+> To work best with [FXML] files in a [JavaFX] application download [JavaFX Scene Builder]
+> supported by [Gluon].
 
 
 
@@ -291,13 +293,14 @@ You can reach me under <peter.rogge@yahoo.de>.
 [FXML]:http://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm
 [General Public License 3.0]:http://www.gnu.org/licenses/gpl-3.0.en.html
 [GenMyModel]:https://www.genmymodel.com/
+[Gluon]:http://gluonhq.com/
 [hibernate-validator-6.0.7.Final.jar]:http://hibernate.org/validator/
 [hibernate-validator-annotation-processor-6.0.7.Final.jar]:http://hibernate.org/validator/
 [IntelliJ IDEA]:http://www.jetbrains.com/idea/
 [Issue]:https://github.com/Naoghuman/lib-validation/issues
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
 [JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
-[JavaFX Scene Builder]:http://www.oracle.com/technetwork/java/javase/downloads/index.html
+[JavaFX Scene Builder]:http://gluonhq.com/products/scene-builder/
 [javax.el-2.2.6.jar]:https://mvnrepository.com/artifact/org.glassfish.web/javax.el
 [javax.el-api-3.0.0.jar]:https://mvnrepository.com/artifact/javax.el/javax.el-api
 [jboss-logging.3.3.0.jar]:https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging
@@ -310,7 +313,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Validation]:https://github.com/Naoghuman/lib-validation/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-
 [Release v0.1.0 (01.15.2018 / MM.dd.yyyy))]:https://github.com/Naoghuman/lib-validation/releases/tag/v0.1.0
 [UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
 [validation-api-2.0.1.jar]:https://mvnrepository.com/artifact/javax.validation/validation-api

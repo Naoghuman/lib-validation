@@ -31,6 +31,7 @@ desktop application.
 
 
 #### Refactoring
+#11 [doc] Update section 'Installation' topic 'JavaFX Scene Builder'.
 
 
 
