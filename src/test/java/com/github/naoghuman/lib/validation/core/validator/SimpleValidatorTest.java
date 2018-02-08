@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2018 - 2018 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
@@ -14,24 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.lib.validation.core;
+package com.github.naoghuman.lib.validation.core.validator;
 
 import java.awt.Label;
 import org.junit.After;
-import org.junit.Assert;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
- *
+ * 
  * @author Naoghuman
- * @since  0.1.0
+ * @since  0.2.0
  */
-public class ValidatorTest {
+public class SimpleValidatorTest {
     
-    public ValidatorTest() {
+    public SimpleValidatorTest() {
     }
     
     @Before
@@ -41,12 +39,18 @@ public class ValidatorTest {
     @After
     public void tearDown() {
     }
+
+    @Test
+    public void testGetDefault() {
+        SimpleValidator instance = SimpleValidator.getDefault();
+        assertNotNull(instance);
+    }
     
     @Test
     public void testIsNullTRUE() {
         Label value = null; // <-----------
         
-        Validator instance = new ValidatorImpl();
+        SimpleValidator instance = SimpleValidator.getDefault();
         assertTrue(instance.isNull(value));
     }
     
@@ -54,7 +58,7 @@ public class ValidatorTest {
     public void testIsNullFALSE() {
         Label value = new Label(); // <-----------
         
-        Validator instance = new ValidatorImpl();
+        SimpleValidator instance = SimpleValidator.getDefault();
         assertFalse(instance.isNull(value));
     }
 
@@ -62,7 +66,7 @@ public class ValidatorTest {
     public void testRequireNonNullThrowNullPointerException() {
         Label value = null; // <-----------
         
-        Validator instance = new ValidatorImpl();
+        SimpleValidator instance = SimpleValidator.getDefault();
         instance.requireNonNull(value);
     }
 
@@ -70,7 +74,7 @@ public class ValidatorTest {
     public void testRequireNonNull() {
         Label value = new Label("hello");
         
-        Validator instance = new ValidatorImpl();
+        SimpleValidator instance = SimpleValidator.getDefault();
         instance.requireNonNull(value);
     }
 
@@ -78,7 +82,7 @@ public class ValidatorTest {
     public void testRequireNonNullAndNotEmptyThrowNullPointerException() {
         String value = null; // <-----------
         
-        Validator instance = new ValidatorImpl();
+        SimpleValidator instance = SimpleValidator.getDefault();
         instance.requireNonNullAndNotEmpty(value);
     }
 
@@ -86,18 +90,17 @@ public class ValidatorTest {
     public void testRequireNonNullAndNotEmptyThrowIllegalArgumentException() {
         String value = ""; // <-----------
         
-        Validator instance = new ValidatorImpl();
+        SimpleValidator instance = SimpleValidator.getDefault();
         instance.requireNonNullAndNotEmpty(value);
     }
 
     @Test
     public void testRequireNonNullAndNotEmpty() {
-        String value = "hallo";
-        Validator instance = new ValidatorImpl();
+        String value = "hallo"; // <-----------
+        
+        SimpleValidator instance = SimpleValidator.getDefault();
         instance.requireNonNullAndNotEmpty(value);
     }
 
-    public class ValidatorImpl implements Validator {
-    }
     
 }

@@ -96,6 +96,26 @@ Plz see for more informations: https://github.com/Naoghuman/lib-validation</desc
             </plugin>
             -->
         </plugins>
+        
+        <resources>
+            <!--
+                Hint: Add here the suffixes from the files with should be in the
+                jar included.
+            -->
+            <!--<resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
     
     <dependencies>

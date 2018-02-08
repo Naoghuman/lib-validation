@@ -14,20 +14,37 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.lib.validation.core;
+package com.github.naoghuman.lib.validation.core.validator;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
- * This {@code Interface} contains different default methods to validate if an 
- * {@link java.lang.Object} conforms specific behaviours or not. For example if 
- * an {@code Object} is {@code NULL} or not.
+ * This {@code Class} contains different methods to validate if an {@link java.lang.Object} 
+ * conforms specific behaviours or not. For example if an {@code Object} is {@code NULL} or not.
  *
  * @author Naoghuman
- * @since  0.1.0
+ * @since  0.2.0
  * @see    java.lang.Object
  */
-public interface Validator {
+public final class SimpleValidator {
+    
+    private static final Optional<SimpleValidator> INSTANCE = Optional.of(new SimpleValidator());
+
+    /**
+     * Returns a singleton instance from the class {@code SimpleValidator}.
+     *
+     * @author Naoghuman
+     * @since  0.2.0
+     * @return a singleton instance from this class {@code SimpleValidator}.
+     */
+    public static final SimpleValidator getDefault() {
+        return INSTANCE.get();
+    }
+
+    private SimpleValidator() {
+        
+    }
     
     /**
      * Delegates to {@link java.util.Objects#isNull(java.lang.Object)}. Returns 
@@ -41,7 +58,7 @@ public interface Validator {
      * @return  {@code TRUE} if the provided reference is {@code NULL} otherwise
      *          {@code FALSE}.
      */
-    public default boolean isNull(final Object obj) {
+    public boolean isNull(final Object obj) {
         return Objects.isNull(obj);
     }
     
@@ -57,7 +74,7 @@ public interface Validator {
      * @return  {@code TRUE} if the provided reference is {@code NON-NULL} otherwise
      *          {@code FALSE}.
      */
-    public default boolean nonNull(final Object obj) {
+    public boolean nonNull(final Object obj) {
         return Objects.nonNull(obj);
     }
     
@@ -70,7 +87,7 @@ public interface Validator {
      * @param  <T>   the type of the reference.
      * @throws NullPointerException if {@code (value == NULL)}.
      */
-    public default <T> void requireNonNull(final T value) throws NullPointerException {
+    public <T> void requireNonNull(final T value) throws NullPointerException {
         Objects.requireNonNull(value, "The attribute [value] can't be NULL"); // NOI18N
     }
     
@@ -83,7 +100,7 @@ public interface Validator {
      * @throws NullPointerException     if {@code (value        == NULL)}.
      * @throws IllegalArgumentException if {@code (value.trim() == EMPTY)}.
      */
-    public default void requireNonNullAndNotEmpty(final String value) throws NullPointerException, IllegalArgumentException {
+    public void requireNonNullAndNotEmpty(final String value) throws NullPointerException, IllegalArgumentException {
         Objects.requireNonNull(value, "The attribute [value] can't be NULL"); // NOI18N
         
         if (value.trim().isEmpty()) {
