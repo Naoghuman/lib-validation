@@ -27,9 +27,9 @@ import static org.junit.Assert.*;
  * @author Naoghuman
  * @since  0.2.0
  */
-public class SimpleValidatorTest {
+public class PreConditionValidatorTest {
     
-    public SimpleValidatorTest() {
+    public PreConditionValidatorTest() {
     }
     
     @Before
@@ -42,7 +42,7 @@ public class SimpleValidatorTest {
 
     @Test
     public void testGetDefault() {
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         assertNotNull(instance);
     }
     
@@ -50,7 +50,7 @@ public class SimpleValidatorTest {
     public void testIsNullTRUE() {
         Label value = null; // <-----------
         
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         assertTrue(instance.isNull(value));
     }
     
@@ -58,7 +58,7 @@ public class SimpleValidatorTest {
     public void testIsNullFALSE() {
         Label value = new Label(); // <-----------
         
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         assertFalse(instance.isNull(value));
     }
 
@@ -66,7 +66,7 @@ public class SimpleValidatorTest {
     public void testRequireNonNullThrowNullPointerException() {
         Label value = null; // <-----------
         
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         instance.requireNonNull(value);
     }
 
@@ -74,7 +74,7 @@ public class SimpleValidatorTest {
     public void testRequireNonNull() {
         Label value = new Label("hello");
         
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         instance.requireNonNull(value);
     }
 
@@ -82,7 +82,7 @@ public class SimpleValidatorTest {
     public void testRequireNonNullAndNotEmptyThrowNullPointerException() {
         String value = null; // <-----------
         
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         instance.requireNonNullAndNotEmpty(value);
     }
 
@@ -90,7 +90,7 @@ public class SimpleValidatorTest {
     public void testRequireNonNullAndNotEmptyThrowIllegalArgumentException() {
         String value = ""; // <-----------
         
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         instance.requireNonNullAndNotEmpty(value);
     }
 
@@ -98,7 +98,7 @@ public class SimpleValidatorTest {
     public void testRequireNonNullAndNotEmpty() {
         String value = "hallo"; // <-----------
         
-        SimpleValidator instance = SimpleValidator.getDefault();
+        PreConditionValidator instance = PreConditionValidator.getDefault();
         instance.requireNonNullAndNotEmpty(value);
     }
 

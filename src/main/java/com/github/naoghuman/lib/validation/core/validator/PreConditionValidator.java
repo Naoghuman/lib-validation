@@ -27,22 +27,22 @@ import java.util.Optional;
  * @since  0.2.0
  * @see    java.lang.Object
  */
-public final class SimpleValidator {
+public final class PreConditionValidator {
     
-    private static final Optional<SimpleValidator> INSTANCE = Optional.of(new SimpleValidator());
+    private static final Optional<PreConditionValidator> INSTANCE = Optional.of(new PreConditionValidator());
 
     /**
-     * Returns a singleton instance from the class {@code SimpleValidator}.
+     * Returns a singleton instance from the class {@code PreConditionValidator}.
      *
      * @author Naoghuman
      * @since  0.2.0
-     * @return a singleton instance from this class {@code SimpleValidator}.
+     * @return a singleton instance from this class {@code PreConditionValidator}.
      */
-    public static final SimpleValidator getDefault() {
+    public static final PreConditionValidator getDefault() {
         return INSTANCE.get();
     }
 
-    private SimpleValidator() {
+    private PreConditionValidator() {
         
     }
     

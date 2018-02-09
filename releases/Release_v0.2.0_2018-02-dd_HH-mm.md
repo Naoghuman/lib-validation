@@ -31,7 +31,7 @@ desktop application.
 
 
 #### Refactoring
-#13 [api] Create new class SimpleValidator.
+#13 [api] Create new class PreConditionValidator.
 #11 [doc] Update section 'Installation' topic 'JavaFX Scene Builder'.
 
 
