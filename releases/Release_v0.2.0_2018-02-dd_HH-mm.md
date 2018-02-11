@@ -6,8 +6,8 @@ desktop application.
 
 
 #### Summary
-* ...
-* ...
+* This is a minor update.
+* New is the annotation `NewDuration` and the corresponding validator `NewDurationValidator`.
 
 
 

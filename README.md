@@ -9,13 +9,13 @@ Intention
 Lib-Validation is a library for `easy` validating in a [JavaFX] &amp; [Maven] application 
 during the integration from [Bean Validation 2.0] ([JSR 380]).
 
-_Image:_ [UML] Lib-Validation v0.1.0  
-![UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43.png][UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43]
+_Image:_ [UML] Lib-Validation v0.2.0  
+![UML-diagram_Lib-Validation_v0.2.0_2018-02-11_18-09.png][UML-diagram_Lib-Validation_v0.2.0_2018-02-11_18-09]
 
 > __Hint__  
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
 
-Current `version` is `0.1.0` (01.15.2018 / MM.dd.yyyy).
+Current `version` is `0.2.0` (02.11.2018 / MM.dd.yyyy).
 
 
 
@@ -28,8 +28,10 @@ Content
     - [TODO More about JSR 380](#MoAbJSR)
     - [TODO More about Bean Validation 2.0](#MoAbBeVa)
 * [Api](#Api)
-    - [com.github.naoghuman.lib.validation.core.Validator](#InVa)
-    - [com.github.naoghuman.lib.validation.core.ValidatorFacade](#ClVaFa)
+    - [com.github.naoghuman.lib.validation.core.annotation.NewDuration](#NeDu)
+    - [com.github.naoghuman.lib.validation.core.validator.NewDurationValidator](#NeDuVa)
+    - [com.github.naoghuman.lib.validation.core.validator.ValidationFactory](#NeDuVa)
+    - [com.github.naoghuman.lib.validation.core.validator.PreConditionValidator](#PrCoVa)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -77,51 +79,217 @@ TODO
 Api<a name="Api" />
 ---
 
-### com.github.naoghuman.lib.validation.core.Validator<a name="InVa" />
+### com.github.naoghuman.lib.validation.core.annotation.NewDuration<a name="NeDu" />
 
 ```java
 /**
- * This {@code Interface} contains different default methods to validate if an 
- * {@link java.lang.Object} conforms specific behaviours or not. For example if 
- * an {@code Object} is {@code NULL} or not.
+ * The annotation {@code NewDuration} lets the developer verify if a given 
+ * {@link java.time.LocalDateTime} is between in a {@link java.time.Duration} 
+ * which starts with {@link java.time.LocalDateTime#now()} and ends with 
+ * {@code valueInDays()}.
+ * <p>
+ * For example given is:<br>
+ * TODO
+ * 
+ * @author Naoghuman
+ * @since  0.2.0
+ * @see    java.time.Duration
+ * @see    java.time.LocalDateTime
+ * @see    java.time.LocalDateTime#now()
+ */
+@Target({ FIELD, LOCAL_VARIABLE })
+@Retention(RUNTIME)
+@Documented
+@Constraint(validatedBy = NewDurationValidator.class)
+public @interface NewDuration
+```
+
+```java
+/**
+ * Returns the message key for the message if 
+ * {@link com.github.naoghuman.lib.validation.core.validator.NewDurationValidator} 
+ * verify that the checked {@link java.time.LocalDateTime} is in the defined 
+ * {@link java.time.Duration}.
+ * <p>
+ * The message for the key can be found in:<br>
+ *  - {@code com.github.naoghuman.lib.validation.core.ValidationMessages.properties}
+ * 
+ * @author Naoghuman
+ * @since  0.2.0
+ * @return the message key.
+ * @see    com.github.naoghuman.lib.validation.core.validator.NewDurationValidator
+ * @see    java.time.Duration
+ * @see    java.time.LocalDateTime
+ */
+public String message() default "{com.github.naoghuman.lib.validation.core.annotation.newduration.message}"; // NOI18N
+```
+
+```java
+/**
+ * The attribute {@code groups} allows the specification of validation groups, 
+ * to which this constraint belongs.
+ * <p>
+ * This must be default an empty array of type Class&lt;?&gt;.
+ * 
+ * @author Naoghuman
+ * @since  0.2.0
+ * @return the groups which should be validate.
+ */
+public Class<?>[] groups() default { };
+```
+
+```java
+/**
+ * The attribute {@code payload} can be used by clients of the {@code Bean Validation API} 
+ * to assign custom payload objects to a constraint. This attribute is not used by the API 
+ * itself.
+ * 
+ * @author Naoghuman
+ * @since  0.2.0
+ * @return the payload which should be validate.
+ */
+public Class<? extends Payload>[] payload() default { };
+```
+
+```java
+/**
+ * The attribute {@code valueInDays} defines the end-point from the 
+ * {@link java.time.Duration} which starts with {@link java.time.LocalDateTime#now()}.
+ * <p>
+ * Default value is {@code 3} days.
+ * 
+ * @author Naoghuman
+ * @since  0.2.0
+ * @return the end-point from the {@code Duration} in days.
+ * @see    java.time.LocalDateTime#now()
+ */
+public int valueInDays() default 3;
+```
+
+
+### com.github.naoghuman.lib.validation.core.validator.NewDurationValidator<a name="NeDuVa" />
+
+```java
+/**
+ * The {@code Validator} for the annotation {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration}.
+ * <p>
+ * Returns {@code TRUE} if the to checked {@link java.time.LocalDateTime} is between 
+ * the defined {@link java.time.Duration} which starts with {@link java.time.LocalDateTime#now()} 
+ * and ends with {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration#valueInDays()}.
  *
  * @author Naoghuman
- * @since  0.1.0
+ * @since  0.2.0
+ * @see    com.github.naoghuman.lib.validation.core.annotation.NewDuration
+ * @see    com.github.naoghuman.lib.validation.core.annotation.NewDuration#valueInDays()
+ * @see    java.time.Duration
+ * @see    java.time.LocalDateTime
+ */
+public final class NewDurationValidator implements ConstraintValidator<NewDuration, LocalDateTime>
+```
+
+
+
+### com.github.naoghuman.lib.validation.core.validator.ValidationFactory<a name="NeDuVa" />
+
+```java
+/**
+ * Simple factory class which alloweds momentary to access an initialized instance 
+ * from a {@link javax.validation.Validator} using the factory defaults for message 
+ * interpolator, traversable resolver and constraint validator factory.
+ * 
+ * @author Naoghuman
+ * @since  0.2.0
+ * @see    javax.validation.Validator
+ */
+public final class ValidationFactory
+```
+
+```java
+private static final Optional<ValidationFactory> INSTANCE = Optional.of(new ValidationFactory());
+
+    /**
+ * Returns a singleton instance from the class {@code ValidationFactory}.
+ *
+ * @author Naoghuman
+ * @since  0.2.0
+ * @return a singleton instance from this class {@code ValidationFactory}.
+ */
+public static final ValidationFactory getDefault()
+```
+
+```java
+/**
+ * Returns an initialized {@link Validator} instance using the
+ * factory defaults for message interpolator, traversable resolver
+ * and constraint validator factory.
+ * <p>
+ * Validator instances can be pooled and shared by the implementation.
+ *
+ * @author Naoghuman
+ * @since  0.2.0
+ * @return an initialized {@code Validator} instance.
+ */
+public Validator getValidator()
+```
+
+
+### com.github.naoghuman.lib.validation.core.validator.PreConditionValidator<a name="NeDuVa" />
+
+```java
+/**
+ * This {@code Class} contains different methods to validate if an {@link java.lang.Object} 
+ * conforms specific behaviours or not. For example if an {@code Object} is {@code NULL} or not.
+ *
+ * @author Naoghuman
+ * @since  0.2.0
  * @see    java.lang.Object
  */
-public interface Validator
+public final class PreConditionValidator
+```
+
+```java
+/**
+ * Returns a singleton instance from the class {@code PreConditionValidator}.
+ *
+ * @author Naoghuman
+ * @since  0.2.0
+ * @return a singleton instance from this class {@code PreConditionValidator}.
+ */
+public static final PreConditionValidator getDefault()
 ```
 
 ```java
 /**
  * Delegates to {@link java.util.Objects#isNull(java.lang.Object)}. Returns 
  * {@code TRUE} if the provided reference is {@code NULL} otherwise {@code FALSE}.
+ * <p>
+ * This method exists to be used as a {@link java.util.function.Predicate}, 
+ * {@code filter(Objects::isNull)}.
  * 
  * @author  Naoghuman
  * @since   0.2.0
- * @apiNote This method exists to be used as a {@link java.util.function.Predicate}, 
- *          {@code filter(Objects::isNull)}.
  * @param   obj a reference which will be checked against {@code NULL}.
  * @return  {@code TRUE} if the provided reference is {@code NULL} otherwise
  *          {@code FALSE}.
  */
-public default boolean isNull(final Object obj)
+public boolean isNull(final Object obj)
 ```
 
 ```java
 /**
  * Delegates to {@link java.util.Objects#nonNull(java.lang.Object)}. Returns 
  * {@code TRUE} if the provided reference is {@code NON-NULL} otherwise {@code FALSE}.
+ * <p>
+ * This method exists to be used as a {@link java.util.function.Predicate},
+ * {@code filter(Objects::nonNull)}.
  * 
  * @author  Naoghuman
  * @since   0.2.0
- * @apiNote This method exists to be used as a {@link java.util.function.Predicate},
- *          {@code filter(Objects::nonNull)}.
  * @param   obj a reference which will be checked against {@code NULL}.
  * @return  {@code TRUE} if the provided reference is {@code NON-NULL} otherwise
  *          {@code FALSE}.
  */
-public default boolean nonNull(final Object obj)
+public boolean nonNull(final Object obj)
 ```
 
 ```java
@@ -134,7 +302,7 @@ public default boolean nonNull(final Object obj)
  * @param  <T>   the type of the reference.
  * @throws NullPointerException if {@code (value == NULL)}.
  */
-public default <T> void requireNonNull(T value) throws NullPointerException
+public <T> void requireNonNull(final T value) throws NullPointerException
 ```
 
 ```java
@@ -147,33 +315,7 @@ public default <T> void requireNonNull(T value) throws NullPointerException
  * @throws NullPointerException     if {@code (value        == NULL)}.
  * @throws IllegalArgumentException if {@code (value.trim() == EMPTY)}.
  */
-public default void requireNonNullAndNotEmpty(String value) throws NullPointerException, IllegalArgumentException
-```
-
-
-### com.github.naoghuman.lib.validation.core.ValidatorFacade<a name="ClVaFa" />
-
-```java
-/**
- * An implementation from the {@code Interface} {@link com.github.naoghuman.lib.validation.core.Validator} 
- * which allowed access to the different {@code validation} methods from the {@code Interface}.
- *
- * @author Naoghuman
- * @since  0.1.0
- * @see    com.github.naoghuman.lib.validation.core.Validator
- */
-public class ValidatorFacade implements Validator
-```
-
-```java
-/**
- * Returns a singleton instance from the class {@code ValidatorFacade}.
- *
- * @author Naoghuman
- * @since  0.1.0
- * @return a singleton instance from this class {@code ValidatorFacade}.
- */
-public static final ValidatorFacade getDefault()
+public void requireNonNullAndNotEmpty(final String value) throws NullPointerException, IllegalArgumentException
 ```
 
 
@@ -182,12 +324,8 @@ Download<a name="Download" />
 ---
 
 Current `version` is `0.1.0`. Main points in this release are:
-* This is a mayor update.
-* The hole library :) .
-* With the interface `Validator` the developer can validate different default 
-  behaivours from objects.
-* With the class `ValidatorFacade` the developer can access the methods from the 
-  interface Validator.
+* This is a minor update.
+* New is the annotation `NewDuration` and the corresponding validator `NewDurationValidator`.
 
 **Maven coordinates**  
 In context from a [Maven] project you can use following maven coordinates: 
@@ -196,13 +334,13 @@ In context from a [Maven] project you can use following maven coordinates:
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-validation</artifactId>
-        <version>0.1.0</version>
+        <version>0.2.0</version>
     </dependency>
 </dependencies>
 ```
 
 Download:
-* [Release v0.1.0 (01.15.2018 / MM.dd.yyyy))]
+* [Release v0.2.0 (02.11.2018 / MM.dd.yyyy))]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Validation]
@@ -213,7 +351,7 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [lib-validation-0.1.0.jar](#Installation).
+* The library [lib-validation-0.2.0.jar](#Installation).
 
 In the library are following libraries registered as dependencies:
 * The library [hibernate-validator-6.0.7.Final.jar](#Installation).
@@ -282,7 +420,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Images)
-[UML-diagram_Lib-Validation_v0.1.0_2018-01-15_05-43]:https://user-images.githubusercontent.com/8161815/34957064-43a4a724-fa2c-11e7-88dc-1f1240a57cfb.png
+[UML-diagram_Lib-Validation_v0.2.0_2018-02-11_18-09]:https://user-images.githubusercontent.com/8161815/36076016-13eebbf6-0f57-11e8-95ff-7c7316cf7d31.png
 
 
 
