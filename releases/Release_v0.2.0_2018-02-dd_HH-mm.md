@@ -25,6 +25,7 @@ desktop application.
 
 
 #### Enhancement
+#9 [doc] Update the documentation to v0.2.0.
 
 
 

@@ -59,7 +59,7 @@ public class NewDurationTest {
     }
     
     @Test
-    public void durationIsLesser3DaysTRUE() {
+    public void durationIsLesser3Days() {
         EntityWith3Days entityWith3Days = new EntityWith3Days();
         entityWith3Days.generationTime  = LocalDateTime.now().minusDays(2).minusHours(1);
         
@@ -69,7 +69,7 @@ public class NewDurationTest {
     }
 
     @Test
-    public void durationIsEquals3DaysTRUE() {
+    public void durationIsEquals3Days() {
         EntityWith3Days entityWith3Days = new EntityWith3Days();
         entityWith3Days.generationTime  = LocalDateTime.now().minusDays(3);
         
@@ -79,7 +79,7 @@ public class NewDurationTest {
     }
 
     @Test
-    public void durationIsGreater3DaysFALSE() {
+    public void durationIsGreater3DaysThrowsConstraintViolation() {
         EntityWith3Days entityWith3Days = new EntityWith3Days();
         entityWith3Days.generationTime  = LocalDateTime.now().minusDays(3).minusMinutes(1);
         
