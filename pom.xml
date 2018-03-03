@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.naoghuman</groupId>
     <artifactId>lib-validation</artifactId>
-    <version>0.2.0</version> <!-- -SNAPSHOT -->
+    <version>0.3.0-SNAPSHOT</version> <!-- -SNAPSHOT -->
     <packaging>jar</packaging>
     <description>`Lib-Validation` is a library for `easy` validating in a [JavaFX] &amp; [Maven] application during the integration from [Bean Validation 2.0] (JSR 380).
 
@@ -46,7 +46,7 @@ Plz see for more informations: https://github.com/Naoghuman/lib-validation</desc
     
     <build>
         <plugins>
-            <!-- for RELEASE -->
+            <!-- for RELEASE 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -60,7 +60,7 @@ Plz see for more informations: https://github.com/Naoghuman/lib-validation</desc
                     </execution>
                 </executions>
             </plugin>
-            <!-- -->
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -68,7 +68,7 @@ Plz see for more informations: https://github.com/Naoghuman/lib-validation</desc
                 <configuration>
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
-                <!-- for RELEASE -->
+                <!-- for RELEASE 
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -77,9 +77,9 @@ Plz see for more informations: https://github.com/Naoghuman/lib-validation</desc
                         </goals>
                     </execution>
                 </executions>
-                <!-- -->
+                -->
             </plugin>
-            <!-- for RELEASE -->
+            <!-- for RELEASE 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -94,7 +94,7 @@ Plz see for more informations: https://github.com/Naoghuman/lib-validation</desc
                     </execution>
                 </executions>
             </plugin>
-            <!-- -->
+            -->
         </plugins>
         
         <resources>
