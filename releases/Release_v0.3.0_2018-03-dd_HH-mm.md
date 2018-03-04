@@ -30,6 +30,7 @@ desktop application.
 
 
 #### Refactoring
+#21 [api] Update constraint NewDuration (attribute + message).
 
 
 

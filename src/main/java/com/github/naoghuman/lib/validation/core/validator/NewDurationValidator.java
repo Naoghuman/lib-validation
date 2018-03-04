@@ -23,16 +23,16 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * The {@code Validator} for the annotation {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration}.
+ * The {@code validator} for the annotation {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration}.
  * <p>
- * Returns {@code TRUE} if the to checked {@link java.time.LocalDateTime} is between 
+ * Returns {@code TRUE} if the to checked {@link java.time.LocalDateTime} is in the range from  
  * the defined {@link java.time.Duration} which starts with {@link java.time.LocalDateTime#now()} 
- * and ends with {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration#valueInDays()}.
+ * and ends with {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration#days()}.
  *
  * @author Naoghuman
  * @since  0.2.0
  * @see    com.github.naoghuman.lib.validation.core.annotation.NewDuration
- * @see    com.github.naoghuman.lib.validation.core.annotation.NewDuration#valueInDays()
+ * @see    com.github.naoghuman.lib.validation.core.annotation.NewDuration#days()
  * @see    java.time.Duration
  * @see    java.time.LocalDateTime
  */
@@ -42,7 +42,7 @@ public final class NewDurationValidator implements ConstraintValidator<NewDurati
 
     @Override
     public void initialize(final NewDuration newDuration) {
-        duration = Duration.ofDays(newDuration.valueInDays());
+        duration = Duration.ofDays(newDuration.days());
     }
 
     @Override

@@ -35,7 +35,7 @@ import org.junit.BeforeClass;
 public class NewDurationTest {
     
     private class EntityWith3Days {
-        @NewDuration(valueInDays = 3)
+        @NewDuration() // default days = 3
         public LocalDateTime generationTime;
     }
     
@@ -61,7 +61,7 @@ public class NewDurationTest {
     @Test
     public void durationIsLesser3Days() {
         EntityWith3Days entityWith3Days = new EntityWith3Days();
-        entityWith3Days.generationTime  = LocalDateTime.now().minusDays(2).minusHours(1);
+        entityWith3Days.generationTime  = LocalDateTime.now().minusDays(2).minusHours(23);
         
         Set<ConstraintViolation<EntityWith3Days>> violations = validator.validate(entityWith3Days);
 

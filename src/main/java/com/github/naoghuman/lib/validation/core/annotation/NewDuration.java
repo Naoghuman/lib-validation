@@ -28,9 +28,8 @@ import javax.validation.Payload;
 
 /**
  * The annotation {@code NewDuration} lets the developer verify if a given 
- * {@link java.time.LocalDateTime} is between in a {@link java.time.Duration} 
- * which starts with {@link java.time.LocalDateTime#now()} and ends with 
- * {@code valueInDays()}.
+ * {@link java.time.LocalDateTime} is in the range from a {@link java.time.Duration} 
+ * which starts with {@link java.time.LocalDateTime#now()} and ends with {@code days()}.
  * <p>
  * For example given is:<br>
  * TODO
@@ -48,9 +47,8 @@ import javax.validation.Payload;
 public @interface NewDuration {
     
     /**
-     * Returns the message key for the message if 
-     * {@link com.github.naoghuman.lib.validation.core.validator.NewDurationValidator} 
-     * verify that the checked {@link java.time.LocalDateTime} is in the defined 
+     * Returns the message key for the message if the validator verify that the 
+     * checked {@link java.time.LocalDateTime} is in the range from the defined 
      * {@link java.time.Duration}.
      * <p>
      * The message for the key can be found in:<br>
@@ -89,16 +87,17 @@ public @interface NewDuration {
     public Class<? extends Payload>[] payload() default { };
     
     /**
-     * The attribute {@code valueInDays} defines the end-point from the 
-     * {@link java.time.Duration} which starts with {@link java.time.LocalDateTime#now()}.
+     * The attribute {@code days} defines the end-point from the {@link java.time.Duration} 
+     * which starts with {@link java.time.LocalDateTime#now()}.
      * <p>
      * Default value is {@code 3} days.
      * 
      * @author Naoghuman
      * @since  0.2.0
      * @return the end-point from the {@code Duration} in days.
+     * @see    java.time.Duration
      * @see    java.time.LocalDateTime#now()
      */
-    public int valueInDays() default 3;
+    public int days() default 3;
     
 }
