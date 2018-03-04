@@ -95,4 +95,67 @@ public class DurationTest {
         assertTrue(durationBetween.getSeconds() < durationDays.getSeconds());
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @Test
+    public void durationIsLesser4WeeksTRUE() {
+        int      weeks         = 4;
+        Duration durationWeeks = Duration.ofDays(weeks * 7);
+        
+        LocalDateTime now  = LocalDateTime.now();
+        LocalDateTime past = LocalDateTime.now().minusDays(2).minusHours(1);
+        Duration durationBetween = Duration.between(past, now);
+        assertTrue(durationBetween.getSeconds() < durationWeeks.getSeconds());
+        
+        past = LocalDateTime.now().minusDays(2).minusHours(23).minusMinutes(59);
+        durationBetween = Duration.between(past, now);
+        assertTrue(durationBetween.getSeconds() < durationWeeks.getSeconds());
+    }
+
+    @Test
+    public void durationIsEquals4WeeksTRUE() {
+        int      weeks         = 4;
+        Duration durationWeeks = Duration.ofDays(weeks * 7);
+        
+        LocalDateTime now  = LocalDateTime.now();
+        LocalDateTime past = LocalDateTime.now().minusDays(28);
+        Duration durationBetween = Duration.between(past, now);
+        assertTrue(durationBetween.getSeconds() == durationWeeks.getSeconds());
+    }
+
+    @Test
+    public void durationIsGreater4WeeksTRUE() {
+        int      weeks         = 4;
+        Duration durationWeeks = Duration.ofDays(weeks * 7);
+        
+        LocalDateTime now  = LocalDateTime.now();
+        LocalDateTime past = LocalDateTime.now().minusDays(28).minusSeconds(20);
+        Duration durationBetween = Duration.between(past, now);
+        assertTrue(durationBetween.getSeconds() > durationWeeks.getSeconds());
+    }
+
+    @Test
+    public void durationIsLesser4WeeksWithMillisTRUE() {
+        int      weeks         = 4;
+        Duration durationWeeks = Duration.ofDays(weeks * 7);
+        
+        LocalDateTime now  = LocalDateTime.now();
+        LocalDateTime past = LocalDateTime.now().minusDays(2).minusHours(23).minusMinutes(59);
+        
+        long          millis    = past.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+        LocalDateTime converted = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault());
+        
+        Duration durationBetween = Duration.between(converted, now);
+        assertTrue(durationBetween.getSeconds() < durationWeeks.getSeconds());
+    }
+    
 }

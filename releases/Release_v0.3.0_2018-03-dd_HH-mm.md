@@ -16,6 +16,7 @@ desktop application.
 
 
 #### Feature
+#17 [api] Add a new constraint `UpdatedDuration` and its validator to the api.
 
 
 
@@ -42,7 +43,6 @@ Naoghuman
 
 
 [//]: # (Issues which will be integrated in this release)
-#17 [api] Add a new constraint `UpdatedDuration` and its validator to the api.
 
 
 

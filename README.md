@@ -29,7 +29,9 @@ Content
     - [TODO More about Bean Validation 2.0](#MoAbBeVa)
 * [Api](#Api)
     - [com.github.naoghuman.lib.validation.core.annotation.NewDuration](#NeDu)
+    - [com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration](#UpDu)
     - [com.github.naoghuman.lib.validation.core.validator.NewDurationValidator](#NeDuVa)
+    - [com.github.naoghuman.lib.validation.core.validator.UpdatedDurationValidator](#UpDuVa)
     - [com.github.naoghuman.lib.validation.core.validator.ValidationFactory](#NeDuVa)
     - [com.github.naoghuman.lib.validation.core.validator.PreConditionValidator](#PrCoVa)
 * [Download](#Download)
@@ -167,6 +169,99 @@ public int valueInDays() default 3;
 ```
 
 
+### com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration<a name="UpDu" />
+
+```java
+/**
+ * The annotation {@code UpdatedDuration} lets the developer verify if a given 
+ * {@link java.time.LocalDateTime} is between in a {@link java.time.Duration} 
+ * which starts with {@link java.time.LocalDateTime#now()} and ends with 
+ * {@code weeks()}.<br>
+ * If a given {@code LocalDateTime} is in the range from the {@code Duration} then 
+ * the validated entity can be flagged as {@code 'Updated'}.
+ * <p>
+ * For example given is:<br>
+ * TODO
+ * 
+ * @author Naoghuman
+ * @since  0.3.0
+ * @see    java.time.Duration
+ * @see    java.time.LocalDateTime
+ * @see    java.time.LocalDateTime#now()
+ */
+@Target({ FIELD, LOCAL_VARIABLE })
+@Retention(RUNTIME)
+@Documented
+@Constraint(validatedBy = UpdatedDurationValidator.class)
+public @interface UpdatedDuration
+```
+
+```java
+/**
+ * Returns the message key for the message if 
+ * {@link com.github.naoghuman.lib.validation.core.validator.UpdatedDurationValidator} 
+ * verify that the checked {@link java.time.LocalDateTime} is in the defined 
+ * {@link java.time.Duration}.
+ * <p>
+ * The message for the key can be found in:<br>
+ *  - {@code com.github.naoghuman.lib.validation.core.ValidationMessages.properties}
+ * 
+ * @author Naoghuman
+ * @since  0.3.0
+ * @return the message key.
+ * @see    com.github.naoghuman.lib.validation.core.validator.UpdatedDurationValidator
+ * @see    java.time.Duration
+ * @see    java.time.LocalDateTime
+ */
+public String message() default "{com.github.naoghuman.lib.validation.core.annotation.updatedduration.message}"; // NOI18N
+```
+
+```java
+/**
+ * The attribute {@code groups} allows the specification of validation groups, 
+ * to which this constraint belongs.
+ * <p>
+ * This must be default an empty array of type Class&lt;?&gt;.
+ * 
+ * @author Naoghuman
+ * @since  0.3.0
+ * @return the groups which should be validate.
+ */
+public Class<?>[] groups() default { };
+```
+
+```java
+/**
+ * The attribute {@code payload} can be used by clients of the {@code Bean Validation API} 
+ * to assign custom payload objects to a constraint. This attribute is not used by the API 
+ * itself.
+ * 
+ * @author Naoghuman
+ * @since  0.3.0
+ * @return the payload which should be validate.
+ */
+public Class<? extends Payload>[] payload() default { };
+```
+
+```java
+/**
+ * The attribute {@code weeks} defines the end-point from the {@link java.time.Duration} 
+ * which starts with {@link java.time.LocalDateTime#now()}.
+ * <br>
+ * If a given {@code LocalDateTime} is in the range from the {@code Duration} then the 
+ * validated entity can be flagged as {@code 'Updated'}.
+ * <p>
+ * Default value is {@code 4} weeks.
+ * 
+ * @author Naoghuman
+ * @since  0.3.0
+ * @return the end-point from the {@code Duration} in weeks.
+ * @see    java.time.LocalDateTime#now()
+ */
+public int weeks() default 4;
+```
+
+
 ### com.github.naoghuman.lib.validation.core.validator.NewDurationValidator<a name="NeDuVa" />
 
 ```java
@@ -187,6 +282,27 @@ public int valueInDays() default 3;
 public final class NewDurationValidator implements ConstraintValidator<NewDuration, LocalDateTime>
 ```
 
+
+### com.github.naoghuman.lib.validation.core.validator.UpdatedDurationValidator<a name="UpDuVa" />
+
+```java
+/**
+ * The {@code Validator} for the annotation {@link com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration}.
+ * <p>
+ * Returns {@code TRUE} if the to checked {@link java.time.LocalDateTime} is between 
+ * the defined {@link java.time.Duration} which starts with {@link java.time.LocalDateTime#now()} 
+ * and ends with {@link com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration#weeks()}.
+ *
+ * @author Naoghuman
+ * @since  0.3.0
+ * @see    com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration
+ * @see    com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration#weeks()
+ * @see    java.time.Duration
+ * @see    java.time.LocalDateTime
+ * @see    java.time.LocalDateTime#now()
+ */
+public final class UpdatedDurationValidator implements ConstraintValidator<UpdatedDuration, LocalDateTime>
+```
 
 
 ### com.github.naoghuman.lib.validation.core.validator.ValidationFactory<a name="NeDuVa" />
