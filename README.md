@@ -260,17 +260,37 @@ public static final PreConditionValidator getDefault()
 
 ```java
 /**
+ * Returns {@code TRUE} if an annotation from the specified type is <em>present</em> 
+ * on given instance otherwise {@code FALSE}. This method is designed primarily for 
+ * convenient access to marker annotations.
+ * <p>
+ * This method simple delegates to {@link java.lang.Class#isAnnotationPresent(java.lang.Class)}.
+ * 
+ * @author Naoghuman
+ * @since  0.3.0
+ * @param  annotation the Class object corresponding to the annotation type.
+ * @param  instance the object which should be checked if the given annotation 
+ *         type is present on the instance or not.
+ * @return {@code TRUE} if an annotation from the specified annotation type is 
+ *         present on given instance otherwise {@code FALSE}.
+ * @see    java.lang.Class#isAnnotationPresent(java.lang.Class)
+ */
+public boolean isAnnotationPresent(final Class<? extends Annotation> annotation, final Class instance)
+```
+
+```java
+/**
  * Delegates to {@link java.util.Objects#isNull(java.lang.Object)}. Returns 
  * {@code TRUE} if the provided reference is {@code NULL} otherwise {@code FALSE}.
  * <p>
  * This method exists to be used as a {@link java.util.function.Predicate}, 
  * {@code filter(Objects::isNull)}.
  * 
- * @author  Naoghuman
- * @since   0.2.0
- * @param   obj a reference which will be checked against {@code NULL}.
- * @return  {@code TRUE} if the provided reference is {@code NULL} otherwise
- *          {@code FALSE}.
+ * @author Naoghuman
+ * @since  0.2.0
+ * @param  obj a reference which will be checked against {@code NULL}.
+ * @return {@code TRUE} if the provided reference is {@code NULL} otherwise
+ *         {@code FALSE}.
  */
 public boolean isNull(final Object obj)
 ```
@@ -283,11 +303,11 @@ public boolean isNull(final Object obj)
  * This method exists to be used as a {@link java.util.function.Predicate},
  * {@code filter(Objects::nonNull)}.
  * 
- * @author  Naoghuman
- * @since   0.2.0
- * @param   obj a reference which will be checked against {@code NULL}.
- * @return  {@code TRUE} if the provided reference is {@code NON-NULL} otherwise
- *          {@code FALSE}.
+ * @author Naoghuman
+ * @since  0.2.0
+ * @param  obj a reference which will be checked against {@code NULL}.
+ * @return {@code TRUE} if the provided reference is {@code NON-NULL} otherwise
+ *         {@code FALSE}.
  */
 public boolean nonNull(final Object obj)
 ```

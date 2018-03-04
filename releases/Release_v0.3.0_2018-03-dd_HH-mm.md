@@ -20,6 +20,7 @@ desktop application.
 
 
 #### Enhancement
+#20 [api] Add new method `isAnnotationPresent(Class, Class)` to the class PreConditionValidator.
 
 
 
