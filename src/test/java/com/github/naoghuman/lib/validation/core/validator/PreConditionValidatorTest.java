@@ -102,5 +102,29 @@ public class PreConditionValidatorTest {
         instance.requireNonNullAndNotEmpty(value);
     }
 
+    @Test
+    public void testAnnotationPresentFALSE() {
+        PreConditionValidator instance = PreConditionValidator.getDefault();
+        boolean result = instance.isAnnotationPresent(Deprecated.class, DummyWithoutAnnotation.class);
+        
+        assertFalse(result);
+    }
+
+    @Test
+    public void testAnnotationPresentTRUE() {
+        PreConditionValidator instance = PreConditionValidator.getDefault();
+        boolean result = instance.isAnnotationPresent(Deprecated.class, DummyWithAnnotation.class);
+        
+        assertTrue(result);
+    }
+
+    private class DummyWithoutAnnotation {
+        
+    }
+    
+    @Deprecated
+    private class DummyWithAnnotation {
+        
+    }
     
 }

@@ -261,7 +261,7 @@ public static final PreConditionValidator getDefault()
 ```java
 /**
  * Returns {@code TRUE} if an annotation from the specified type is <em>present</em> 
- * on given instance otherwise {@code FALSE}. This method is designed primarily for 
+ * on given class otherwise {@code FALSE}. This method is designed primarily for 
  * convenient access to marker annotations.
  * <p>
  * This method simple delegates to {@link java.lang.Class#isAnnotationPresent(java.lang.Class)}.
@@ -269,13 +269,13 @@ public static final PreConditionValidator getDefault()
  * @author Naoghuman
  * @since  0.3.0
  * @param  annotation the Class object corresponding to the annotation type.
- * @param  instance the object which should be checked if the given annotation 
+ * @param  classToCheck the object which should be checked if the given annotation 
  *         type is present on the instance or not.
  * @return {@code TRUE} if an annotation from the specified annotation type is 
  *         present on given instance otherwise {@code FALSE}.
  * @see    java.lang.Class#isAnnotationPresent(java.lang.Class)
  */
-public boolean isAnnotationPresent(final Class<? extends Annotation> annotation, final Class instance)
+public boolean isAnnotationPresent(final Class<? extends Annotation> annotation, final Class classToCheck)
 ```
 
 ```java
