@@ -22,6 +22,7 @@ desktop application.
 
 #### Enhancement
 #20 [api] Add new method `isAnnotationPresent(Class, Class)` to the class PreConditionValidator.
+#15 [doc] Add commentary to the package-info.java files.
 
 
 

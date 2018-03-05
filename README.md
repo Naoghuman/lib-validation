@@ -85,18 +85,24 @@ Api<a name="Api" />
 
 ```java
 /**
- * The annotation {@code NewDuration} lets the developer verify if a given 
- * {@link java.time.LocalDateTime} is in the range from a {@link java.time.Duration} 
- * which starts with {@link java.time.LocalDateTime#now()} and ends with {@code days()}.
+ * The annotation {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration} 
+ * lets the developer verify if a given {@link java.time.LocalDateTime} is in the range 
+ * from a {@link java.time.Duration} which starts with ({@link java.time.LocalDateTime#now()} 
+ * - {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration#days()}) and ends 
+ * with {@link java.time.LocalDateTime#now()}.
+ * <br>
+ * If a given {@code LocalDateTime} is in the range then the validated entity can be flagged 
+ * as {@code 'New'}.
  * <p>
  * For example given is:<br>
  * TODO
  * 
- * @author Naoghuman
- * @since  0.2.0
- * @see    java.time.Duration
- * @see    java.time.LocalDateTime
- * @see    java.time.LocalDateTime#now()
+ * @author  Naoghuman
+ * @since   0.2.0
+ * @version 0.3.0
+ * @see     java.time.Duration
+ * @see     java.time.LocalDateTime
+ * @see     java.time.LocalDateTime#now()
  */
 @Target({ FIELD, LOCAL_VARIABLE })
 @Retention(RUNTIME)
@@ -153,16 +159,19 @@ public Class<? extends Payload>[] payload() default { };
 
 ```java
 /**
- * The attribute {@code days} defines the end-point from the {@link java.time.Duration} 
- * which starts with {@link java.time.LocalDateTime#now()}.
+ * The attribute {@code days} defines the start-point from the {@link java.time.Duration} 
+ * which is ({@link java.time.LocalDateTime#now()} - 
+ * {@link com.github.naoghuman.lib.validation.core.annotation.NewDuration#days()}) and 
+ * ends with {@link java.time.LocalDateTime#now()}.
  * <p>
  * Default value is {@code 3} days.
  * 
- * @author Naoghuman
- * @since  0.2.0
- * @return the end-point from the {@code Duration} in days.
- * @see    java.time.Duration
- * @see    java.time.LocalDateTime#now()
+ * @author  Naoghuman
+ * @since   0.2.0
+ * @version 0.3.0
+ * @return  the start-point from the {@code Duration} in days.
+ * @see     java.time.Duration
+ * @see     java.time.LocalDateTime#now()
  */
 public int days() default 3;
 ```
@@ -172,12 +181,14 @@ public int days() default 3;
 
 ```java
 /**
- * The annotation {@code UpdatedDuration} lets the developer verify if a given 
- * {@link java.time.LocalDateTime} is between in a {@link java.time.Duration} 
- * which starts with {@link java.time.LocalDateTime#now()} and ends with 
- * {@code weeks()}.<br>
- * If a given {@code LocalDateTime} is in the range from the {@code Duration} then 
- * the validated entity can be flagged as {@code 'Updated'}.
+ * The annotation {@link com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration} 
+ * lets the developer verify if a given {@link java.time.LocalDateTime} is in the range 
+ * from a {@link java.time.Duration} which starts with ({@link java.time.LocalDateTime#now()} 
+ * - {@link com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration#weeks()}) and 
+ * ends with {@link java.time.LocalDateTime#now()}.
+ * <br>
+ * If a given {@code LocalDateTime} is in the range then the validated entity can be flagged 
+ * as {@code 'Updated'}.
  * <p>
  * For example given is:<br>
  * TODO
@@ -244,17 +255,17 @@ public Class<? extends Payload>[] payload() default { };
 
 ```java
 /**
- * The attribute {@code weeks} defines the end-point from the {@link java.time.Duration} 
- * which starts with {@link java.time.LocalDateTime#now()}.
- * <br>
- * If a given {@code LocalDateTime} is in the range from the {@code Duration} then the 
- * validated entity can be flagged as {@code 'Updated'}.
+ * The attribute {@code weeks} defines the start-point from the {@link java.time.Duration} 
+ * which is ({@link java.time.LocalDateTime#now()} - 
+ * {@link com.github.naoghuman.lib.validation.core.annotation.UpdatedDuration#weeks()}) and 
+ * ends with {@link java.time.LocalDateTime#now()}.
  * <p>
  * Default value is {@code 4} weeks.
  * 
  * @author Naoghuman
  * @since  0.3.0
- * @return the end-point from the {@code Duration} in weeks.
+ * @return the start-point from the {@code Duration} in weeks.
+ * @see    java.time.Duration
  * @see    java.time.LocalDateTime#now()
  */
 public int weeks() default 4;
