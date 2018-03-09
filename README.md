@@ -9,8 +9,8 @@ Intention
 Lib-Validation is a library for `easy` validating in a [JavaFX] &amp; [Maven] application 
 during the integration from [Bean Validation 2.0] ([JSR 380]).
 
-_Image:_ [UML] Lib-Validation v0.2.0  
-![UML-diagram_Lib-Validation_v0.2.0_2018-02-11_18-09.png][UML-diagram_Lib-Validation_v0.2.0_2018-02-11_18-09]
+_Image:_ [UML] Lib-Validation v0.3.0  
+![UML-diagram_Lib-Validation_v0.3.0_2018-03-09_05-36.png][UML-diagram_Lib-Validation_v0.3.0_2018-03-09_05-36]
 
 > __Hint__  
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
@@ -566,7 +566,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Images)
-[UML-diagram_Lib-Validation_v0.2.0_2018-02-11_18-09]:https://user-images.githubusercontent.com/8161815/36076016-13eebbf6-0f57-11e8-95ff-7c7316cf7d31.png
+[UML-diagram_Lib-Validation_v0.3.0_2018-03-09_05-36]:https://user-images.githubusercontent.com/8161815/37190787-16612a4a-235c-11e8-9b9c-0979ec6201a9.png
 
 
 

@@ -31,6 +31,7 @@ desktop application.
 
 
 #### Refactoring
+#23 [doc] Update ReadMe.md to 0.3.0.
 #21 [api] Update constraint NewDuration (attribute + message).
 
 
